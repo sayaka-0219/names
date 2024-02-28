@@ -88,3 +88,64 @@ spring.datasource.password={パスワード 名}
 ```  
 ![img_19.png](img_19.png)←application.properties  
 ![img_20.png](img_20.png)←docker-compose.yml  
+  
+### MyBatisを使ったファイルを作成
+MyBatisではファイル名を `扱いたいリソース名`+`Mapper` とするのが一般的。  
+そして、DBに対してどのような操作をするかをメソッドで表現する。  
+　　
+ちなみにMyBatisではMappperと名付けるが、DBとやり取りするためのモジュールは `Repositoey` という呼び方をすることが多い。  
+  
+MyBatisを使ったファイルを作成する階層は `mainメソッドがあるApplicationクラス` と同じ階層で  
+クラスではなくinterfaceで作成する。javaの階層で作っちゃうとうまく動かない。
+![img_22.png](img_22.png)  
+![img_23.png](img_23.png)  
+  
+・＠Mapperをつけ、ibatisをインポート。  
+・@Select(SELECT文を記述)し、メソッドを記述。  
+　メソッド名は何でもいい。一目でどのようなメソッドなのかわかる名前にする。  
+・NameMapperのメソッドの返り値として定義しているNameはデータベースのレコードに対応している。  
+　アプリケーション全体の設計によるが、ここではエンティティとよぶ。  
+　エンティティは文脈により違うものを表すことがあるが、ここではデータベースのレコードに対応 するものとして定義。  
+
+![img_21.png](img_21.png)  
+  
+・Nameクラスを定義。  
+![img_24.png](img_24.png)  
+  
+## READ処理
+NameMapperを利用してテーブルからデータを読み取る処理を実装。  
+Controllerのクラスを作り、記述。  
+
+@RestControllerをつけないとSpringがコントローラーとして認識しないので必ずつける。  
+```java
+
+@RestController
+public class NameController {
+private final NameMapper nameMapper; //フィールド　ここでフィールドを定義しているからnameMapper.findAll()でNameMapperクラスのfindAllが使える。
+public NameController(NameMapper nameMapper) {　//コンストラクタ
+this.nameMapper = nameMapper;
+}
+@GetMapping("/names")
+public List<Name> findAll() {
+return nameMapper.findAll();
+}
+}
+```
+  
+## クエリ文字
+＜NameMapper＞
+```java
+@Select("SELECT * FROM names WHERE name LIKE CONCAT(#{prefix}, '%')")
+    List<Name> findByNameStartingWith(String prefix); //prefix=接頭辞
+```
+・メソッド名のfindByNameStartingWithは自分で考えたもの  
+・どんな文字で検索するかが必要なので引数が必要になる - (String prefix)  
+・Select文のWHEREは検索条件を加えるときに使う。具体的な内容をその後ろに書く。  
+　LIKEは「～のような」、nameがnameカラム、CONCAT(#{prefix}, '%')が検索設定のようなもの。  
+  
+＜NameController＞  
+```java
+ @GetMapping("/names")
+ public List<Name> findByNames(@RequestParam String startsWith) {
+ return nameMapper.findByNameStartingWith(startsWith);
+```
