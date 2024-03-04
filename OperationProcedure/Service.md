@@ -177,8 +177,8 @@ ExceptionHandlerの扱い方は複数あるが、ここでは1例を紹介する
 ユーザーが見つからなかったとき用の例外なのでUserNotFoundExceptionという例外を作成.
 ```java
 public class UserNotFoundException extends RuntimeException {//UserNotFoundExceptionは自分でほかの名前を考える
- public UserNotFoundException(String message) {
- super(message);
+ public UserNotFoundException(String message) {//ここから2行はコンストラクタ
+ super(message);//UserNotFoundExceptionはクラスだからインスタンス化する必要がある
   }
  }
 ```
