@@ -1,22 +1,24 @@
 package com.sayaka.MyBatis.demo;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 @RestController
 public class NameController {
-    private final NameMapper nameMapper;
+    private final NameService nameService;
 
-
-    public NameController(NameMapper nameMapper) {
-        this.nameMapper = nameMapper;
+    public NameController(NameService nameService) {
+        this.nameService = nameService;
     }
 
     @GetMapping("/names")
-    public List<Name> findByNames(NameSearchRequest request) {
-        List<Name> names = nameMapper.findByNameStartingWith(request.getStartsWith(), request.getEndsWith());
-        return names;
-
+    public List<Name> getNames(NameSearchRequest request){
+        return nameService.findByNames(request.getStartsWith(), request.getEndsWith());
+    }
+    @GetMapping("/users/{id}")
+    public Name getUser(@PathVariable("id") int id) {
+        return nameService.findUser(id);
     }
 }
