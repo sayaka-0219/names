@@ -17,6 +17,7 @@ public class NameController {
     public List<Name> getNames(NameSearchRequest request){
         return nameService.findByNames(request.getStartsWith(), request.getEndsWith());
     }
+
     @GetMapping("/users/{id}")
     public Name getUser(@PathVariable("id") int id) {
         return nameService.findUser(id);
