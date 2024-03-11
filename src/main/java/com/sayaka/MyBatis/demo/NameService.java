@@ -26,4 +26,10 @@ public class NameService {
             throw new UserNotExistException("user not found");
         }
     }
+
+    public Name insert(String name) {
+        Name user = Name.creatName(name);
+        nameMapper.insert(user);
+        return user;
+    }
 }

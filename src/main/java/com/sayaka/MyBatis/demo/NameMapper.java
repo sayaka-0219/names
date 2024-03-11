@@ -1,6 +1,8 @@
 package com.sayaka.MyBatis.demo;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -14,4 +16,8 @@ public interface NameMapper {
 
         @Select("SELECT * FROM names WHERE id = #{id}")
         Optional<Name> findById(int id);
+
+        @Insert("INSERT INTO names (name) VALUES (#{name})")
+        @Options(useGeneratedKeys = true, keyProperty = "id")
+        void insert(Name user);
 }

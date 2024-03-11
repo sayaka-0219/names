@@ -1,19 +1,24 @@
 package com.sayaka.MyBatis.demo;
 
 public class Name {
-    private  int id;
+    private  Integer id;
     private  String name;
+    private String email;
 
-    public  Name(int id, String name) {
+    public  Name(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public static Name creatName(String name) {
+        return new Name(null,name);
     }
 }
