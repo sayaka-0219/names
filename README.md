@@ -43,4 +43,6 @@ namesテーブルに5つの名前のレコードが入っており、それぞ�
   
 ・`http://localhost:8080/users/1`  
 1のIDを持つ『name1』が返ってきており、ステータスコードも200で返ってきています。
-![img_8.png](img_8.png)
+![img_8.png](img_8.png)  
+
+
