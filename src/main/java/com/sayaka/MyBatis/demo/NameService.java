@@ -13,11 +13,13 @@ public class NameService {
         this.nameMapper = nameMapper;
     }
 
+    //頭文字、最後の文字をどちらか、又はどちらも指定したときのRead処理
     public List<Name> findByNames(String startsWith, String endsWith) {
         List<Name> names = nameMapper.findByNameStartingWith(startsWith, endsWith);
         return names;
     }
 
+    // ID検索でのRead処理
     public Name findUser(int id) {
         Optional<Name> user = this.nameMapper.findById(id);
         if (user.isPresent()) {
@@ -27,6 +29,7 @@ public class NameService {
         }
     }
 
+    //Create処理
     public Name insert(String name) {
         Name user = Name.creatName(name);
         nameMapper.insert(user);

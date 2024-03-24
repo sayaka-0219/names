@@ -221,9 +221,7 @@ UserResponse body = new UserResponse("user created");
   
 動作確認。  
 メールアドレスは重複を許さないので事前に山田太郎のレコードを削除しておこう。  
-`curl -X POST -H "Content-Type: application/json" -d '{"name": "
-⼭⽥太郎
-", "email": "yamada@example.com"}' http://localhost:8080/users`
+`curl -X POST -H "Content-Type: application/json" -d '{"name": "⼭⽥太郎", "email": "yamada@example.com"}' http://localhost:8080/users`
 レスポンスは次のようになる。  
 ```json
 {
@@ -232,4 +230,4 @@ UserResponse body = new UserResponse("user created");
 ```
 -i オプションをつけてヘッダを確認してみる。  
 ステータスコードは201になり、Locationヘッダも返ることを確認する。  
-  
+curl -X PATCH -H "Content-Type: application/json" -d '{"name":"太郎"}' http://localhost:8080/users/5

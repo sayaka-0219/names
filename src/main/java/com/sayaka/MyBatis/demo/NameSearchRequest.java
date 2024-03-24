@@ -3,6 +3,7 @@ package com.sayaka.MyBatis.demo;
 public class NameSearchRequest {
     private String startsWith;
     private String endsWith;
+    private Integer findId;
 
     public NameSearchRequest(String startsWith, String endsWith) {
         this.startsWith = startsWith;

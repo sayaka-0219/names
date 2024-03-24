@@ -3,7 +3,6 @@ package com.sayaka.MyBatis.demo;
 public class Name {
     private  Integer id;
     private  String name;
-    private String email;
 
     public  Name(Integer id, String name) {
         this.id = id;
@@ -20,5 +19,13 @@ public class Name {
 
     public static Name creatName(String name) {
         return new Name(null,name);
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
