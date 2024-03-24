@@ -1,4 +1,4 @@
-package com.sayaka.MyBatis.demo;
+package com.sayaka.MyBatis.demo.entity;
 
 public class Name {
     private  Integer id;

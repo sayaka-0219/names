@@ -1,4 +1,4 @@
-package com.sayaka.MyBatis.demo;
+package com.sayaka.MyBatis.demo.controller.request;
 
 public class NameSearchRequest {
     private String startsWith;

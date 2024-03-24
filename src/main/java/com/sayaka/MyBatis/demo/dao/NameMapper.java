@@ -1,5 +1,6 @@
-package com.sayaka.MyBatis.demo;
+package com.sayaka.MyBatis.demo.dao;
 
+import com.sayaka.MyBatis.demo.entity.Name;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

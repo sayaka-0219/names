@@ -1,5 +1,6 @@
-package com.sayaka.MyBatis.demo;
+package com.sayaka.MyBatis.demo.exception;
 
+import com.sayaka.MyBatis.demo.exception.exceptionclass.UserNotExistException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

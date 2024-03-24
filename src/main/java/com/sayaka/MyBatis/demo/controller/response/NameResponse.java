@@ -1,4 +1,4 @@
-package com.sayaka.MyBatis.demo;
+package com.sayaka.MyBatis.demo.controller.response;
 
 public class NameResponse {
     private String message;

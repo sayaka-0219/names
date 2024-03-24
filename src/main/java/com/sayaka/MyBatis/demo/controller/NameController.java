@@ -1,6 +1,10 @@
-package com.sayaka.MyBatis.demo;
+package com.sayaka.MyBatis.demo.controller;
 
-import org.apache.ibatis.annotations.Update;
+import com.sayaka.MyBatis.demo.controller.request.NameRequest;
+import com.sayaka.MyBatis.demo.controller.request.NameSearchRequest;
+import com.sayaka.MyBatis.demo.controller.response.NameResponse;
+import com.sayaka.MyBatis.demo.entity.Name;
+import com.sayaka.MyBatis.demo.service.NameService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

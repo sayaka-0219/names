@@ -1,4 +1,4 @@
-package com.sayaka.MyBatis.demo;
+package com.sayaka.MyBatis.demo.controller.request;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.validation.constraints.NotBlank;

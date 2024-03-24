@@ -1,5 +1,8 @@
-package com.sayaka.MyBatis.demo;
+package com.sayaka.MyBatis.demo.service;
 
+import com.sayaka.MyBatis.demo.exception.exceptionclass.UserNotExistException;
+import com.sayaka.MyBatis.demo.dao.NameMapper;
+import com.sayaka.MyBatis.demo.entity.Name;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
